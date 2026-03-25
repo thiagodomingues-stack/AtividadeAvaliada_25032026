@@ -1,0 +1,93 @@
+# Avaliação — Engenharia de Software
+Sistema Integrado de Gestão de Farmácia — MVP Definido pelo Estudante
+
+## Aluno: Thiago Mafra Domingues
+## RA: 25000115
+## Data: 25/03/2026
+
+# 1. Definição do MVP
+O MVP vai cobrir todo o processo de venda do produto, do cadastro do cliente até a emissão da nota fiscal, isso inclui a atualização automática do estoque de produtos após a compra.
+
+## O que está dentro do MVP:
+-Cadastro do clientes
+-Consulta do produtos
+-Registro da vendas
+-Verificação do estoque
+-Atualização do estoque
+-Emissão do comprovante
+
+## O que está fora do MVP:
+-Compras com fornecedor
+-Contas a pagar
+-Relatórios avançados
+
+## Por que você fez essas escolhas:
+Representa melhor a área de vendas da farmácia venda, além que, garante o funcionamento básico do negócio.
+
+2. Regras de Negócio (mínimo: 5)
+Liste e descreva cada RN de forma clara.
+
+RN01 — Venda somente com estoque disponível
+O sistema não permite venda de produtos sem quantidade suficiente.
+
+RN02 — Cadastro obrigatório para venda a prazo
+O cliente deve ter uma conta na loja para fazer vendas a prazo
+
+RN03 — Atualização automática de estoque
+Toda venda reduz o numero do estoque.
+
+RN04 — Registro automático de contas a receber
+Vendas a prazo geram lançamento financeiro automático.
+
+RN05 — Produtos devem possuir preço válido
+Nenhum produto pode ser vendido sem um preço escolhido anteriormente.
+
+(Adicione mais se quiser.)
+
+3. Requisitos Funcionais (mínimo: 8)
+Liste os requisitos funcionais do seu MVP.
+
+RF01 —
+RF02 —
+RF03 —
+RF04 —
+RF05 —
+RF06 —
+RF07 —
+RF08 —
+
+(Adicione mais se quiser.)
+
+🛡 4. Requisitos Não Funcionais (mínimo: 4)
+Liste os RNFs do sistema conforme seu MVP.
+
+RNF01 —
+RNF02 —
+RNF03 —
+RNF04 —
+
+(Adicione mais se quiser.)
+
+5. Casos de Uso (mínimo: 10)
+Inserir diagrama de casos de uso geral, demonstrando claramente:
+os 10 casos
+relação entre eles e atores
+pelo menos 3 includes
+pelo menos 3 extends
+6. Documentação dos Casos de Uso
+Para cada caso de uso, utilize o template abaixo:
+UCXX — Nome do Caso de Uso
+Ator(es):
+Descrição:
+Pré-condições:
+Pós-condições:
+
+Fluxo Principal
+Fluxos Alternativos / Exceções
+FA01 —
+FA02 —
+Relacionamentos
+Include: (listar quando aplicável)
+Extend: (listar quando aplicável)
+Inserir o diagrama de atividades do Caso de Uso, demonstrando tudo o fluxo princial e alternativos/exceções.
+Repita essa estrutura para todos os seus casos de uso (mínimo 10).
