@@ -76,25 +76,7 @@ A interface deve ser simples e intuitiva.
 # 5. Casos de Uso (mínimo: 10)
 Atores: Atendente e Cliente
 
--Realizar Venda
-
--Identificar Cliente
-
--Cadastrar Cliente
-
--Consultar Produto
-
--Verificar Estoque
-
--Registrar Itens da Venda
-
--Finalizar Venda
-
--Emitir Comprovante
-
--Registrar Venda a Prazo
-
--Gerar Conta a Receber
+<img width="680" height="282" alt="image" src="https://github.com/user-attachments/assets/f1018c4e-091a-4219-ad69-af31f25ded12" />
 
 # 6. Documentação dos Casos de Uso
 Para cada caso de uso, utilize o template abaixo:
