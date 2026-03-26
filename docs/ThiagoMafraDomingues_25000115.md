@@ -6,56 +6,55 @@ Sistema Integrado de Gestão de Farmácia — MVP Definido pelo Estudante
 ## Data: 25/03/2026
 
 # 1. Definição do MVP
-O MVP vai cobrir todo o processo de venda do produto, do cadastro do cliente até a emissão da nota fiscal, isso inclui a atualização automática do estoque de produtos após a compra.
+O MVP vai cobrir o processo de venda de produtos, incluindo a seleção de itens, validação de cliente e finalização da compra, garantindo também a baixa automática no estoque após a conclusão da venda.
 
 ## O que está dentro do MVP:
 
-- Cadastro do clientes
-- Consulta do produtos
-- Registro da vendas
-- Verificação do estoque
-- Atualização do estoque
-- Emissão do comprovante
+- Identificação de clientes
+- Busca de produtos
+- Inclusão de itens na venda
+- Conferência de disponibilidade
+- Baixa automática de estoque
+- Finalização da venda
 
 ## O que está fora do MVP:
-- Compras com fornecedor
-- Contas a pagar
-- Relatórios avançados
+- Controle de fornecedores
+- Gestão de contas a pagar
+- Emissão de relatórios gerenciais
 
 ## Por que você fez essas escolhas:
- Pois representa melhor a área de vendas da farmácia venda, além que, garante o funcionamento básico do negócio.
+ Pois esse fluxo representa a operação principal da farmácia, permitindo garantir o funcionamento básico das vendas com controle de estoque.
 
-# 2. Regras de Negócio (mínimo: 5)
-Liste e descreva cada RN de forma clara.
+# 2. Regras de Negócio (mínimo: 5) Liste e descreva cada RN de forma clara.
 
-## RN01 — Venda somente com estoque disponível
-O sistema não permite venda de produtos sem quantidade suficiente.
+## RN01 — Não permitir venda com produto inativo
+Produtos desativados não podem ser vendidos.
 
-## RN02 — Cadastro obrigatório para venda a prazo
-O cliente deve ter uma conta na loja para fazer vendas a prazo
+## RN02 — Cliente deve ser identificado antes da finalização
+Toda venda deve estar associada a um cliente identificado.
 
-## RN03 — Atualização automática de estoque
-Toda venda reduz o numero do estoque.
+## RN03 — Estoque deve ser reduzido imediatamente após a venda
+A baixa no estoque ocorre automaticamente após a finalização.
 
-## RN04 — Vendas devem ter numeração de identificação
-Vendas geram um numero unico para identificação e busca.
+## RN04 — Cada venda deve registrar data e hora
+Todas as vendas devem conter data e horário para controle.
 
-## RN05 — Produtos devem possuir preço válido
-Nenhum produto pode ser vendido sem um preço escolhido anteriormente.
+## RN05 — Quantidade vendida deve ser maior que zero
+Não é permitido registrar itens com quantidade igual ou menor que zero.
 
 (Adicione mais se quiser.)
 
 # 3. Requisitos Funcionais (mínimo: 8)
 Liste os requisitos funcionais do seu MVP.
 
-## RF01 — Cadastrar cliente
-## RF02 — Consultar cliente
-## RF03 — Cadastrar produto
-## RF04 — Consultar produto
-## RF05 — Registrar venda
-## RF06 — Consultar venda
-## RF07 — Emitir comprovante da venda
-## RF08 — Atualizar estoque após venda
+## RF01 — Identificar cliente
+## RF02 — Buscar produto por nome ou código
+## RF03 — Adicionar produto à venda
+## RF04 — Informar quantidade do item
+## RF05 — Validar disponibilidade em estoque
+## RF06 — Calcular valor total da venda
+## RF07 — Finalizar venda
+## RF08 — Registrar saída no estoque
 
 (Adicione mais se quiser.)
 
@@ -63,13 +62,16 @@ Liste os requisitos funcionais do seu MVP.
 Liste os RNFs do sistema conforme seu MVP.
 
 ## RNF01 — Desempenho
-O sistema deve responder consultas em até 3 segundos.
+O sistema deve processar vendas em até 2 segundos.
+
 ## RNF02 — Segurança
-Somente usuários com autoridade podem realizar vendas.
+O sistema deve exigir autenticação para acesso às funcionalidades.
+
 ## RNF03 — Disponibilidade
-O sistema deve estar disponível 100% do tempo.
+O sistema deve funcionar durante o horário comercial sem interrupções.
+
 ## RNF04 — Usabilidade
-A interface deve ser simples e intuitiva.
+O sistema deve permitir operação com poucos cliques.
 
 (Adicione mais se quiser.)
 
@@ -83,18 +85,18 @@ Atores: Atendente e Cliente
 ## UC01 — Emitir Comprovante
 
 - Ator(es): Sistema
-- Descrição: Gera o comprovante da venda realizada
-- Pré-condições: Venda finalizada
-- Pós-condições: Comprovante emitido
+- Descrição: Gera um documento com os dados da venda
+- Pré-condições: Venda concluída
+- Pós-condições: Documento disponível
 
 ## Fluxo Principal
-- Sistema recebe dados da venda
-- Gera comprovante
-- Disponibiliza para impressão
+- Sistema coleta informações da venda
+- Gera documento
+- Exibe ou imprime
 
 ##Fluxos Alternativos / Exceções
-FA01 — Falha na geração
-→ Sistema exibe erro
+FA01 — Erro na impressão
+→ Sistema informa falha
 
 - Relacionamentos
 
@@ -104,18 +106,19 @@ FA01 — Falha na geração
 ## UC02 — Consultar Produto
 
 - Ator(es): Atendente
-- Descrição: Permite buscar produtos no sistema
-- Pré-condições: Sistema ativo
-- Pós-condições: Produto exibido
+- Descrição: Permite localizar produtos cadastrados
+- Pré-condições: Sistema disponível
+- Pós-condições: Lista de produtos exibida
 
 ## Fluxo Principal
-- Atendente informa nome/código
-- Sistema busca produto
-- Sistema exibe resultado
-- Fluxos Alternativos / Exceções
+- Atendente digita informação
+- Sistema realiza busca
+- Sistema apresenta resultado
 
-## FA01 — Produto não encontrado
-- Sistema informa indisponibilidade
+## Fluxos Alternativos / Exceções
+
+## FA01 — Nenhum resultado encontrado
+- Sistema exibe mensagem
 
 - Relacionamentos
 
@@ -125,19 +128,19 @@ FA01 — Falha na geração
 ## UC03 — Gerar Conta a Receber
 
 - Ator(es): Sistema
-- Descrição: Cria registro financeiro de venda a prazo
-- Pré-condições: Venda a prazo realizada
-- Pós-condições: Conta registrada
+- Descrição: Registra valor pendente de pagamento
+- Pré-condições: Venda com pagamento futuro
+- Pós-condições: Registro financeiro criado
 
 ## Fluxo Principal
-- Sistema recebe dados da venda
+- Sistema recebe dados
 - Define vencimento
-- Registra conta
+- Salva registro
 
 ## Fluxos Alternativos / Exceções
 
-- FA01 — Erro no registro
-- Sistema notifica falha
+- FA01 — Falha ao salvar
+- Sistema alerta erro
 
 - Relacionamentos
 
@@ -147,19 +150,19 @@ FA01 — Falha na geração
 ## UC04 — Identificar Cliente
 
 - Ator(es): Atendente
-- Descrição: Localiza cliente no sistema
+- Descrição: Busca cliente no sistema
 - Pré-condições: Sistema ativo
-- Pós-condições: Cliente identificado
+- Pós-condições: Cliente localizado
 
 ## Fluxo Principal
-- Atendente informa dados
-- Sistema busca cliente
+- Atendente informa dado
+- Sistema consulta base
 - Exibe cliente
 
 ## Fluxos Alternativos / Exceções
 
-- FA01 — Cliente não encontrado
-- Redireciona para cadastro
+- FA01 — Cliente inexistente
+- Sugere cadastro
 
 - Relacionamentos
 
@@ -169,18 +172,19 @@ FA01 — Falha na geração
 ## UC05 — Registrar Itens da Venda
 
 - Ator(es): Atendente
-- Descrição: Adiciona produtos à venda
+- Descrição: Insere produtos na venda
 - Pré-condições: Venda iniciada
-- Pós-condições: Itens registrados
+- Pós-condições: Itens adicionados
 
 ## Fluxo Principal
-- Atendente seleciona produto
-- Informa quantidade
-- Sistema adiciona item
+- Seleciona produto
+- Define quantidade
+- Confirma inclusão
+
 ## Fluxos Alternativos / Exceções
 
-- FA01 — Quantidade inválida
-- Sistema solicita correção
+- FA01 — Produto inválido
+- Sistema rejeita
 
 - Relacionamentos
 
@@ -190,19 +194,19 @@ FA01 — Falha na geração
 ## UC06 — Finalizar Venda
 
 - Ator(es): Atendente
-- Descrição: Conclui o processo de venda
-- Pré-condições: Itens registrados
-- Pós-condições: Venda concluída
+- Descrição: Conclui operação de venda
+- Pré-condições: Itens inseridos
+- Pós-condições: Venda registrada
 
 ##Fluxo Principal
-- Atendente confirma venda
-- Sistema calcula total
-- Sistema finaliza
+- Confirma dados
+- Sistema calcula valor
+- Registra venda
 
 ##Fluxos Alternativos / Exceções
 
-- FA01 — Erro no fechamento
-- Sistema cancela operação
+- FA01 — Falha no sistema
+- Operação cancelada
 
 - Relacionamentos
 
@@ -212,19 +216,19 @@ FA01 — Falha na geração
 ## UC07 — Cadastrar Cliente
 
 - Ator(es): Atendente
-- Descrição: Registra novo cliente
-- Pré-condições: Cliente não cadastrado
-- Pós-condições: Cliente salvo
+- Descrição: Adiciona novo cliente
+- Pré-condições: Cliente não encontrado
+- Pós-condições: Cliente incluído
 
 ##Fluxo Principal
-- Atendente insere dados
-- Sistema valida
-- Sistema salva
+- Preenche dados
+- Valida informações
+- Salva cadastro
 
 ##Fluxos Alternativos / Exceções
 
-- FA01 — Dados inválidos
-- Sistema solicita correção
+- FA01 — Dados incompletos
+- Solicita correção
 
 - Relacionamentos
 
@@ -234,18 +238,18 @@ FA01 — Falha na geração
 ## UC08 — Verificar Estoque
 
 - Ator(es): Sistema
-- Descrição: Verifica disponibilidade de produto
+- Descrição: Consulta quantidade disponível
 - Pré-condições: Produto selecionado
-- Pós-condições: Estoque validado
+- Pós-condições: Quantidade exibida
 
 ## Fluxo Principal
-- Sistema consulta estoque
-- Retorna quantidade
+- Sistema consulta banco
+- Retorna valor
 
 ##Fluxos Alternativos / Exceções
 
-- FA01 — Estoque insuficiente
-- Sistema bloqueia venda
+- FA01 — Sem estoque
+- Bloqueia ação
 
 - Relacionamentos
 
@@ -255,19 +259,19 @@ FA01 — Falha na geração
 ## UC09 — Registrar Venda a Prazo
 
 - Ator(es): Sistema
-- Descrição: Registra venda com pagamento futuro
-- Pré-condições: Venda selecionada como a prazo
-- Pós-condições: Venda registrada
+- Descrição: Define venda como pagamento futuro
+- Pré-condições: Escolha de pagamento a prazo
+- Pós-condições: Venda marcada
 
 ## Fluxo Principal
-- Sistema identifica tipo de pagamento
-- Marca como a prazo
-- Continua processo
+- Identifica forma de pagamento
+- Marca venda
+- Continua fluxo
 
 ## Fluxos Alternativos / Exceções
 
-- FA01 — Cliente inválido
-- Sistema impede operação
+- FA01 — Cliente não autorizado
+- Bloqueia operação
 
 - Relacionamentos
 
@@ -277,26 +281,26 @@ FA01 — Falha na geração
 ## UC10 — Realizar Venda
 
 - Ator(es): Atendente, Cliente
-- Descrição: Processo completo de venda
-- Pré-condições: Sistema ativo
-- Pós-condições: Venda registrada
+- Descrição: Executa todo o fluxo de venda
+- Pré-condições: Sistema em funcionamento
+- Pós-condições: Venda concluída
 
 ## Fluxo Principal
-- Atendente inicia venda
+- Inicia operação
 - Identifica cliente
-- Consulta produto
-- Verifica estoque
-- Registra itens
+- Busca produto
+- Confere estoque
+- Adiciona itens
 - Finaliza venda
 - Emite comprovante
 
 ##Fluxos Alternativos / Exceções
 
-- FA01 — Produto sem estoque
--  Venda interrompida
+- FA01 — Item indisponível
+- Venda interrompida
 
-- FA02 — Cliente não cadastrado
--  Direciona para cadastro
+- FA02 — Cliente ausente
+- Solicita cadastro
 
 - Relacionamentos
 
