@@ -94,11 +94,11 @@ Atores: Atendente e Cliente
 - Gera documento
 - Exibe ou imprime
 
-##Fluxos Alternativos / Exceções
-FA01 — Erro na impressão
-→ Sistema informa falha
+## Fluxos Alternativos / Exceções
+- FA01 — Erro na impressão
+- Sistema informa falha
 
-- Relacionamentos
+## Relacionamentos
 
 - Include: —
 - Extend: —
@@ -116,11 +116,13 @@ FA01 — Erro na impressão
 - Sistema apresenta resultado
 
 ## Fluxos Alternativos / Exceções
-
+- FA01 — Nenhum produto encontrado
+- Sistema informa ausência
+  
 ## FA01 — Nenhum resultado encontrado
 - Sistema exibe mensagem
 
-- Relacionamentos
+## Relacionamentos
 
 - Include: —
 - Extend: —
@@ -138,11 +140,10 @@ FA01 — Erro na impressão
 - Salva registro
 
 ## Fluxos Alternativos / Exceções
-
 - FA01 — Falha ao salvar
 - Sistema alerta erro
 
-- Relacionamentos
+## Relacionamentos
 
 - Include: —
 - Extend: Registrar Venda a Prazo
@@ -164,7 +165,7 @@ FA01 — Erro na impressão
 - FA01 — Cliente inexistente
 - Sugere cadastro
 
-- Relacionamentos
+## Relacionamentos
 
 - Include: —
 - Extend: Cadastrar Cliente
@@ -186,7 +187,7 @@ FA01 — Erro na impressão
 - FA01 — Produto inválido
 - Sistema rejeita
 
-- Relacionamentos
+## Relacionamentos
 
 - Include: —
 - Extend: —
@@ -198,17 +199,17 @@ FA01 — Erro na impressão
 - Pré-condições: Itens inseridos
 - Pós-condições: Venda registrada
 
-##Fluxo Principal
+## Fluxo Principal
 - Confirma dados
 - Sistema calcula valor
 - Registra venda
 
-##Fluxos Alternativos / Exceções
+## Fluxos Alternativos / Exceções
 
 - FA01 — Falha no sistema
 - Operação cancelada
 
-- Relacionamentos
+## Relacionamentos
 
 - Include: —
 - Extend: Registrar Venda a Prazo
@@ -220,17 +221,17 @@ FA01 — Erro na impressão
 - Pré-condições: Cliente não encontrado
 - Pós-condições: Cliente incluído
 
-##Fluxo Principal
+## Fluxo Principal
 - Preenche dados
 - Valida informações
 - Salva cadastro
 
-##Fluxos Alternativos / Exceções
+## Fluxos Alternativos / Exceções
 
 - FA01 — Dados incompletos
 - Solicita correção
 
-- Relacionamentos
+## Relacionamentos
 
 - Include: —
 - Extend: —
@@ -246,12 +247,12 @@ FA01 — Erro na impressão
 - Sistema consulta banco
 - Retorna valor
 
-##Fluxos Alternativos / Exceções
+## Fluxos Alternativos / Exceções
 
 - FA01 — Sem estoque
 - Bloqueia ação
 
-- Relacionamentos
+## Relacionamentos
 
 - Include: —
 - Extend: —
@@ -273,7 +274,7 @@ FA01 — Erro na impressão
 - FA01 — Cliente não autorizado
 - Bloqueia operação
 
-- Relacionamentos
+## Relacionamentos
 
 - Include: —
 - Extend: Gerar Conta a Receber
@@ -294,7 +295,7 @@ FA01 — Erro na impressão
 - Finaliza venda
 - Emite comprovante
 
-##Fluxos Alternativos / Exceções
+## Fluxos Alternativos / Exceções
 
 - FA01 — Item indisponível
 - Venda interrompida
@@ -302,7 +303,7 @@ FA01 — Erro na impressão
 - FA02 — Cliente ausente
 - Solicita cadastro
 
-- Relacionamentos
+## Relacionamentos
 
 - Include: Identificar Cliente, Consultar Produto, Verificar Estoque
 - Extend: Finalizar Venda
